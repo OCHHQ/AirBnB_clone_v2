@@ -1,4 +1,27 @@
+# AirBnB_clone_v2
+
+## Description
+This repository is a fork of the AirBnB clone project. It contains the codebase for the second version of the AirBnB clone, with additional features and improvements.
+
+## Authors
+- Initial Author:[Justin Majetich](https://github.com/justinmajetich/AirBnB_clone)
+- New Contributors:
+  - [Enoseje Collins](https://github.com/OCHHQ/AirBnB_clone_v2)
+  - [Abdalrahman Magdy](https://github.com/abdalrahmanmagdy)
+
+## Features
+- MySQL integration
+- Improved code structure
+- Enhanced features
+
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ochhq/AirBnB_clone_v2.git
+
+
 <center> <h1>HBNB - The Console</h1> </center>
+
 
 This repository contains the initial stage of a student project to build a clone of the AirBnB website. This stage implements a backend interface, or console, to manage program data. Console commands allow the user to create, update, and destroy objects, as well as manage file storage. Using a system of JSON serialization/deserialization, storage is persistent between sessions.
 
