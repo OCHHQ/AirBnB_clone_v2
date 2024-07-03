@@ -17,4 +17,3 @@ engine = create_engine(DATABASE_URL, pool_pre_ping=True)
 
 # Create all tables
 Base.metadata.create_all(engine)
-
