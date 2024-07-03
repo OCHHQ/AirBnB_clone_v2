@@ -5,30 +5,34 @@ from models.base_model import Base
 
 
 class DBStorage:
-    """Datebase stroage engine for MySQl Using SQLAlchemy"""
+    """Database storage engine for MySQL using SQLAlchemy"""
     __engine = None
     __session = None
 
     def __init__(self):
-        """instantiate a DBStorage object"""
+        """Instantiate a DBStorage object"""
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'.format(
             os.getenv('HBNB_MYSQL_USER'),
             os.getenv('HBNB_MYSQL_PWD'),
             os.getenv('HBNB_MYSQL_HOST'),
-            os.getenv('HBNB_MYSQL_DB')), pool_pre_ping = True)
-        
+            os.getenv('HBNB_MYSQL_DB')), pool_pre_ping=True)
+
         if os.getenv('HBNB_ENV') == 'test':
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
-        """Quary all object of of class or all object of no class is specified"""
+        """Query all objects of a class or all objects if no class is specified"""
+        from models.state import State
+        from models.city import City
+
         if cls:
             objs = self.__session.query(cls).all()
         else:
-            objs = self.__session.query(State).all() + \
-                   self.__session.query(City).all()
-        return{"{}.{}".format(type(obj).__name__,obj.id): obj for obj in objs}  #list compheersion here
-    
+            objs = self.__session.query(State).all()
+            objs.extend(self.__session.query(City).all())
+
+        return {"{}.{}".format(type(obj).__name__, obj.id): obj for obj in objs}
+
     def new(self, obj):
         """Add the object to the current database session"""
         self.__session.add(obj)

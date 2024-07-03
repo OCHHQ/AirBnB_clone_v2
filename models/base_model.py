@@ -50,6 +50,11 @@ class BaseModel:
             del dictionary["_sa_instance_state"]
         return dictionary
 
+    def delete(self):
+        """Delete the current instance from storage"""
+        from models import storage
+        storage.delete(self)
+
     def __str__(self):
         """Returns a string representation of the instance"""
         return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
