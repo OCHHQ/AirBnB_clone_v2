@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-A simple Flask web application.
+A simple Flask web application
 """
 
 
@@ -24,7 +24,8 @@ def hbnb():
 
 @app.route('/c/<text>', strict_slashes=False)
 def c_text(text):
-    """Displays 'C ' followed by the value of the text var (replace underscore _ symbols with a space)"""
+    """Displays 'C ' followed by the value of the text var 
+    (replace underscore _ symbols with a space)"""
     return "C {}".format(text.replace('_', ' '))
 
 
