@@ -14,10 +14,12 @@ class State(BaseModel, Base):
     @property
     def cities(self):
         """Getter for cities when using FileStorage"""
-        from models import storage
-        from models.city import City
-        city_list = []
-        for city in storage.all(City).values():
-            if city.state_id == self.id:
-                city_list.append(city)
-        return city_list
+        if type(storage).__name__ != 'DBStorage':
+            from models import storage
+            from models.city import City
+            city_list = []
+            for city in storage.all(City).values():
+                if city.state_id == self.id:
+                    city_list.append(city)
+            return city_list
+
